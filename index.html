@@ -66,7 +66,7 @@
                         <line x1="300" y1="20" x2="300" y2="680" stroke="#1f2937" stroke-width="2" stroke-dasharray="6,6" />
 
                         <g id="anterior-leg">
-                            <path class="anatomy-base" d="M120,100 C100,180 120,280 130,350 C120,400 130,450 140,550 L180,550 C190,450 200,400 180,350 C190,280 220,180 200,100 Z" />
+                            <path class="anatomy-base" d="M120,100 C100,180 120,280 130,350 C120,400 130,450 140,540 L130,580 L190,580 L180,540 C190,450 200,400 180,350 C190,280 220,180 200,100 Z" />
                             <path data-index="4" class="muscle-group" style="stroke-dasharray: 4,4;" d="M145,150 C140,220 145,280 150,340 C160,340 170,340 175,340 C180,280 185,220 175,150 Z" />
                             <path data-index="2" class="muscle-group" d="M120,130 C100,200 110,280 135,360 C145,300 145,200 140,130 Z" />
                             <path data-index="3" class="muscle-group" d="M175,250 C190,290 195,330 175,380 C165,360 165,300 175,250 Z" />
@@ -84,10 +84,19 @@
                                 <line x1="135" y1="390" x2="135" y2="440" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
                                 <line x1="175" y1="390" x2="175" y2="440" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
                             </g>
+                            <path data-index="18" class="muscle-group" d="M138,370 C128,420 135,480 145,520 C155,480 152,420 148,370 Z" />
+                            <path data-index="19" class="muscle-group" d="M162,370 C182,420 172,480 165,520 C155,480 158,420 155,370 Z" />
+                            <g data-index="20" class="tendon-group">
+                                <circle cx="175" cy="525" r="5" fill="none" stroke-width="2"/>
+                                <line x1="175" y1="525" x2="165" y2="540" />
+                                <line x1="175" y1="525" x2="175" y2="540" />
+                                <line x1="175" y1="525" x2="185" y2="535" />
+                            </g>
+                            <path data-index="23" class="tendon-group" d="M132,582 L188,582 L185,588 L135,588 Z" />
                         </g>
 
                         <g id="posterior-leg">
-                            <path class="anatomy-base" d="M400,100 C370,180 390,280 400,350 C380,400 370,450 390,550 L430,550 C450,450 460,400 440,350 C460,280 480,180 460,100 Z" />
+                            <path class="anatomy-base" d="M400,100 C370,180 390,280 400,350 C380,400 370,450 390,540 L395,580 L425,580 L430,540 C450,450 460,400 440,350 C460,280 480,180 460,100 Z" />
                             <path data-index="9" class="muscle-group" d="M380,70 C400,60 420,70 430,90 C400,100 380,110 380,70 Z" />
                             <path data-index="8" class="muscle-group" d="M370,90 C400,90 460,100 465,160 C440,190 390,190 365,150 Z" />
                             <path data-index="6" class="muscle-group" d="M415,170 C440,250 445,300 430,360 C415,300 410,250 415,170 Z" />
@@ -95,6 +104,15 @@
                             <g data-index="12" class="tendon-group">
                                 <path d="M430,360 C435,390 440,420 435,450" fill="none" stroke-width="5" stroke-linecap="round"/>
                                 <path d="M400,360 C390,390 380,420 390,450" fill="none" stroke-width="5" stroke-linecap="round"/>
+                            </g>
+                            <path data-index="16" class="muscle-group" d="M395,360 C370,400 380,440 410,460 C440,440 450,400 425,360 C415,380 405,380 395,360 Z" />
+                            <path data-index="17" class="muscle-group" d="M390,440 C380,480 395,510 410,520 C425,510 440,480 430,440 C420,450 400,450 390,440 Z" />
+                            <path data-index="22" class="tendon-group" d="M405,480 C405,520 400,540 400,560 L420,560 C420,540 415,520 415,480 Z" />
+                            <g data-index="21" class="tendon-group">
+                                <circle cx="395" cy="525" r="5" fill="none" stroke-width="2"/>
+                                <line x1="395" y1="525" x2="385" y2="540" />
+                                <line x1="395" y1="525" x2="395" y2="540" />
+                                <line x1="395" y1="525" x2="405" y2="535" />
                             </g>
                         </g>
                     </svg>
@@ -266,6 +284,70 @@
                 function: "Stops the knee joint from buckling sideways.",
                 maintenance: `<strong>Maintenance:</strong> Single-leg dumbbell deadlifts (proprioceptive balance training). <a href="https://www.youtube.com/results?search_query=single+leg+deadlift+balance+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
                 diagnostic: "Press directly on the joint line exactly on the inside (MCL) or outside (LCL) of the knee. Tenderness directly on the joint line indicates ligament stress."
+            },
+            {
+                category: "Posterior Piston",
+                name: "Gastrocnemius",
+                desc: "The superficial, twin-bellied upper calf muscle.",
+                function: "Explosive plantar flexion (toe-off propulsion) and limb flexion at the knee.",
+                maintenance: `<strong>Exercise:</strong> Standing Calf Raises. <a href="https://www.youtube.com/results?search_query=standing+calf+raise+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Straight-leg wall stretch. <a href="https://www.youtube.com/results?search_query=gastrocnemius+wall+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
+                diagnostic: "Perform a single-leg heel raise with a perfectly straight knee. A deep burn high up in the back of the leg confirms isolation."
+            },
+            {
+                category: "Endurance Engine",
+                name: "Soleus",
+                desc: "The absolute workhorse endurance muscle lying beneath the Gastrocnemius.",
+                function: "Postural stabilization, sustained plantar flexion, and limb extension at the knee.",
+                maintenance: `<strong>Exercise:</strong> Seated Calf Raises. <a href="https://www.youtube.com/results?search_query=seated+calf+raise+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Bent-knee wall stretch. <a href="https://www.youtube.com/results?search_query=soleus+bent+knee+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
+                diagnostic: "Perform a single-leg heel raise with the knee bent at a 45-degree angle. Soreness deep and low in the calf is the Soleus crying."
+            },
+            {
+                category: "Anterior Decelerator",
+                name: "Tibialis Anterior",
+                desc: "The meaty muscle on the front/outside of your shin bone.",
+                function: "Dorsiflexion (lifting the foot to clear the ground) and vital eccentric deceleration of the foot slap.",
+                maintenance: `<strong>Exercise:</strong> Wall Tib Raises (lean back against wall, lift toes). <a href="https://www.youtube.com/results?search_query=tibialis+anterior+raise+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Kneeling shin stretch (sit back on heels). <a href="https://www.youtube.com/results?search_query=tibialis+anterior+kneeling+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
+                diagnostic: "Walk across the room entirely on your heels. The immediate burning sensation down the front of your shins is your diagnostic."
+            },
+            {
+                category: "Lateral Stabilizer",
+                name: "Peroneals (Fibularis Group)",
+                desc: "Muscles running down the outside of the calf/fibula.",
+                function: "Foot eversion (turning the sole outward) and dynamic lateral ankle stabilization.",
+                maintenance: `<strong>Exercise:</strong> Banded ankle eversions. <a href="https://www.youtube.com/results?search_query=banded+ankle+eversion+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Inversion stretch (gently pulling foot inward). <a href="https://www.youtube.com/results?search_query=peroneal+ankle+inversion+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
+                diagnostic: "Anchor a band, wrap around foot, and rotate foot outward against resistance. Outer lower-leg ache indicates fatigue."
+            },
+            {
+                category: "Joint Stabilizer",
+                name: "Lateral Ankle Ligaments",
+                desc: "The outer structural tape of the talocrural joint (ATFL, CFL, PTFL).",
+                function: "Prevents the foot from rolling too far inward (inversion).",
+                maintenance: `<strong>Maintenance:</strong> Single-leg balance on an unstable surface (rolled-up yoga mat or Bosu ball). <a href="https://www.youtube.com/results?search_query=ankle+stability+exercises+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> None. Do not stretch ligaments, you maniac.`,
+                diagnostic: "Sit and point your toe down, then yank your foot sharply inward. If you feel a tearing sensation or sharp ache on the outer ankle bone, congratulations, it's sprained."
+            },
+            {
+                category: "Joint Stabilizer",
+                name: "Medial Ankle Ligament",
+                desc: "The massive, multi-banded inner tape of the ankle joint (Deltoid Ligament).",
+                function: "Prevents the foot from collapsing outward (eversion).",
+                maintenance: `<strong>Maintenance:</strong> Banded ankle inversions (pulling foot inward against resistance). <a href="https://www.youtube.com/results?search_query=banded+ankle+inversion+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
+                diagnostic: "Pain located exclusively on the inside ankle bone, usually resulting from severe external trauma or a totally botched landing."
+            },
+            {
+                category: "Biological Leaf Spring",
+                name: "Achilles Tendon",
+                desc: "The thickest, strongest biological leaf spring in the human body.",
+                function: "Transmits muscular force to the bone, storing and releasing massive elastic energy.",
+                maintenance: `<strong>Maintenance:</strong> Eccentric Heel Drops off a stair. <a href="https://www.youtube.com/results?search_query=eccentric+heel+drops+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
+                diagnostic: "Pinch the thick cord just above your heel bone. General stiffness in the morning that warms up during the day is classic tendinopathy."
+            },
+            {
+                category: "Underbody Support",
+                name: "Plantar Fascia",
+                desc: "Thick connective tissue web forming the undercarriage of the foot.",
+                function: "Windlass mechanism support; maintains the arch during weight-bearing propulsion.",
+                maintenance: `<strong>Maintenance:</strong> Towel scrunches with toes / lacrosse ball roll. <a href="https://www.youtube.com/results?search_query=foot+towel+scrunches+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Big toe extension stretch. <a href="https://www.youtube.com/results?search_query=plantar+fascia+toe+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
+                diagnostic: "Press your thumb hard into the sole of your foot, right where the arch meets the heel bone. Sharp, needle-like pain is plantar fasciitis."
             }
         ];
 
