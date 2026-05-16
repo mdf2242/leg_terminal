@@ -21,8 +21,15 @@
         .anatomy-base { fill: #1f2937; stroke: #4b5563; stroke-width: 2; stroke-linejoin: round; }
         .muscle-group { fill: #374151; stroke: #111827; stroke-width: 2; cursor: pointer; transition: all 0.2s ease; }
         .muscle-group:hover { fill: rgba(16, 185, 129, 0.2); stroke: #34d399; }
+        
         .tendon-group { fill: #9ca3af; stroke: #4b5563; stroke-width: 1.5; cursor: pointer; transition: all 0.2s ease; }
         .tendon-group:hover { fill: #d1d5db; stroke: #34d399; filter: drop-shadow(0 0 4px rgba(52, 211, 153, 0.5)); }
+
+        .fascia { fill: none; stroke: #9ca3af; stroke-width: 5; cursor: pointer; transition: all 0.2s ease; }
+        .fascia:hover { stroke: #34d399; filter: drop-shadow(0 0 4px rgba(52, 211, 153, 0.5)); }
+
+        .ligament { fill: none; stroke: #9ca3af; stroke-width: 3; cursor: pointer; transition: all 0.2s ease; }
+        .ligament:hover { stroke: #34d399; filter: drop-shadow(0 0 4px rgba(52, 211, 153, 0.5)); }
 
         .active-part { fill: rgba(16, 185, 129, 0.4) !important; stroke: #10b981 !important; filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.5)); z-index: 10; }
     </style>
@@ -48,74 +55,129 @@
             
             <div id="col-index" class="flex lg:col-span-3 flex-col min-h-0 bg-gray-900 rounded-xl border border-gray-800 shadow-xl overflow-hidden absolute lg:relative inset-0 lg:inset-auto z-10 lg:z-auto">
                 <div class="flex-1 overflow-y-auto p-2 space-y-1" id="component-list">
-                    </div>
+                    <!-- JS Injected List -->
+                </div>
             </div>
 
-            <div id="col-diagram" class="hidden lg:flex lg:col-span-5 flex-col min-h-0 bg-gray-900 rounded-xl border border-gray-800 shadow-xl relative overflow-hidden items-center justify-center p-2 absolute lg:relative inset-0 lg:inset-auto z-10 lg:z-auto">
-                <div class="w-full h-full p-2 relative flex items-center justify-center">
-                    <svg viewBox="0 0 600 700" class="w-full h-full object-contain drop-shadow-2xl" id="chassis-svg">
-                        <defs>
-                            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f2937" stroke-width="0.5"/>
-                            </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#grid)" />
+            <div id="col-diagram" class="hidden lg:flex lg:col-span-5 flex-col min-h-0 bg-gray-900 rounded-xl border border-gray-800 shadow-xl relative overflow-hidden items-center justify-start p-4 absolute lg:relative inset-0 lg:inset-auto z-10 lg:z-auto">
+                <h2 class="text-lg font-bold text-gray-300 tracking-widest mb-4 shrink-0 text-center uppercase border-b border-gray-800 pb-2 w-full">Right Leg Blueprint</h2>
+                
+                <div class="w-full h-full overflow-y-auto pr-2 pb-10">
+                    <div class="grid grid-cols-2 gap-x-4 gap-y-8 w-full max-w-xl mx-auto pb-8">
+                        
+                        <!-- 1. FRONT VIEW -->
+                        <div id="view-front" class="flex flex-col items-center">
+                            <span class="text-[10px] sm:text-xs font-mono font-bold text-emerald-500/80 tracking-widest mb-2 uppercase text-center">Front / Anterior</span>
+                            <svg viewBox="0 0 250 650" class="w-full h-auto drop-shadow-xl bg-gray-950/30 rounded-lg border border-gray-800/50">
+                                <g id="front-leg">
+                                    <g class="base-layer">
+                                        <path class="anatomy-base" d="M95,80 C75,180 95,330 105,380 C95,480 100,550 105,590 L90,620 L160,620 L145,590 C150,550 155,480 145,380 C155,330 175,180 155,80 Z" />
+                                    </g>
+                                    <g class="muscle-layer">
+                                        <path data-index="0" class="muscle-group" style="fill:none; stroke-dasharray:8,4; stroke-width:1;" d="M105,90 C85,180 105,320 125,350 C145,320 165,180 145,90 Z" />
+                                        <path data-index="4" class="muscle-group" style="stroke-dasharray: 4,4;" d="M125,120 C115,190 120,270 130,320 C140,270 140,190 135,120 Z" />
+                                        <path data-index="1" class="muscle-group" d="M125,100 C110,180 115,280 135,340 C150,280 150,180 140,100 Z" />
+                                        <path data-index="7" class="muscle-group" d="M150,90 C130,180 110,280 95,370 L105,370 C120,280 145,180 160,90 Z" />
+                                        <path data-index="23" class="muscle-group" d="M130,410 C145,480 140,530 135,580 C125,510 130,450 120,410 Z" />
+                                    </g>
+                                    <g class="connective-layer">
+                                        <circle cx="125" cy="375" r="10" fill="#4b5563" stroke="#9ca3af" stroke-width="1" />
+                                        <path data-index="13" class="tendon-group" style="stroke-width:3" d="M120,340 L130,340 L125,365 Z" />
+                                        <path data-index="14" class="tendon-group" style="stroke-width:3" d="M120,385 L130,385 L125,415 Z" />
+                                        <g data-index="17" class="ligament">
+                                            <line x1="115" y1="370" x2="135" y2="380" />
+                                            <line x1="135" y1="370" x2="115" y2="380" />
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
 
-                        <text x="180" y="50" fill="#6b7280" font-size="14" font-weight="bold" font-family="monospace" text-anchor="middle" letter-spacing="2">ANTERIOR</text>
-                        <text x="420" y="50" fill="#6b7280" font-size="14" font-weight="bold" font-family="monospace" text-anchor="middle" letter-spacing="2">POSTERIOR</text>
-                        <line x1="300" y1="20" x2="300" y2="680" stroke="#1f2937" stroke-width="2" stroke-dasharray="6,6" />
+                        <!-- 2. BACK VIEW -->
+                        <div id="view-back" class="flex flex-col items-center">
+                            <span class="text-[10px] sm:text-xs font-mono font-bold text-emerald-500/80 tracking-widest mb-2 uppercase text-center">Back / Posterior</span>
+                            <svg viewBox="250 0 250 650" class="w-full h-auto drop-shadow-xl bg-gray-950/30 rounded-lg border border-gray-800/50">
+                                <g id="back-leg">
+                                    <g class="base-layer">
+                                        <path class="anatomy-base" d="M345,80 C325,180 345,330 355,380 C345,480 350,550 355,610 L395,610 C400,550 405,480 395,380 C405,330 425,180 405,80 Z" />
+                                    </g>
+                                    <g class="muscle-layer">
+                                        <path data-index="11" class="muscle-group" d="M335,80 C325,120 375,170 415,120 C405,80 365,60 335,80 Z" />
+                                        <path data-index="8" class="muscle-group" style="fill:none; stroke-dasharray:8,4; stroke-width:1;" d="M355,160 C345,250 350,330 375,360 C400,330 395,250 385,160 Z" />
+                                        <path data-index="9" class="muscle-group" d="M355,160 C345,250 350,330 365,360 C375,290 370,210 365,160 Z" />
+                                        <path data-index="10" class="muscle-group" d="M385,160 C395,250 390,330 380,360 C370,290 375,210 375,160 Z" />
+                                        <path data-index="21" class="muscle-group" d="M360,390 C340,450 360,510 370,530 C370,460 365,420 360,390 Z" />
+                                        <path data-index="21" class="muscle-group" d="M390,390 C410,450 390,510 380,530 C380,460 385,420 390,390 Z" />
+                                        <path data-index="22" class="muscle-group" d="M355,480 C350,520 360,560 370,580 C365,540 360,510 355,480 Z" />
+                                        <path data-index="22" class="muscle-group" d="M395,480 C400,520 390,560 380,580 C385,540 390,510 395,480 Z" />
+                                    </g>
+                                    <g class="connective-layer">
+                                        <g data-index="15" class="tendon-group" style="fill:none; stroke-width:4;">
+                                            <line x1="365" y1="360" x2="360" y2="400" />
+                                            <line x1="380" y1="360" x2="385" y2="400" />
+                                        </g>
+                                        <path data-index="18" class="ligament" d="M365,375 L385,385" />
+                                        <path data-index="27" class="tendon-group" style="fill:#cbd5e1; stroke-width:2;" d="M370,530 C370,570 365,590 365,610 L385,610 C385,590 380,570 380,530 Z" />
+                                        <path data-index="28" class="fascia" d="M355,615 L395,615" />
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
 
-                        <g id="anterior-leg">
-                            <path class="anatomy-base" d="M120,100 C100,180 120,280 130,350 C120,400 130,450 140,540 L130,580 L190,580 L180,540 C190,450 200,400 180,350 C190,280 220,180 200,100 Z" />
-                            <path data-index="4" class="muscle-group" style="stroke-dasharray: 4,4;" d="M145,150 C140,220 145,280 150,340 C160,340 170,340 175,340 C180,280 185,220 175,150 Z" />
-                            <path data-index="2" class="muscle-group" d="M120,130 C100,200 110,280 135,360 C145,300 145,200 140,130 Z" />
-                            <path data-index="3" class="muscle-group" d="M175,250 C190,290 195,330 175,380 C165,360 165,300 175,250 Z" />
-                            <path data-index="1" class="muscle-group" d="M140,110 C130,200 140,290 145,360 C160,360 170,290 175,110 Z" />
-                            <path data-index="13" class="tendon-group" style="fill:none; stroke-width:6;" d="M115,100 C95,200 115,300 130,420" />
-                            <path data-index="10" class="tendon-group" d="M145,360 C150,380 160,380 165,360 Z" />
-                            <circle cx="155" cy="390" r="12" fill="#4b5563" stroke="#9ca3af" stroke-width="1" />
-                            <path data-index="11" class="tendon-group" d="M148,402 L162,402 L158,450 L152,450 Z" />
-                            <g data-index="14">
-                                <circle cx="155" cy="425" r="8" fill="none" stroke="#6b7280" stroke-width="2" stroke-dasharray="2,2"/>
-                                <line x1="150" y1="420" x2="160" y2="430" stroke="#9ca3af" stroke-width="2"/>
-                                <line x1="160" y1="420" x2="150" y2="430" stroke="#9ca3af" stroke-width="2"/>
-                            </g>
-                            <g data-index="15">
-                                <line x1="135" y1="390" x2="135" y2="440" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
-                                <line x1="175" y1="390" x2="175" y2="440" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
-                            </g>
-                            <path data-index="18" class="muscle-group" d="M138,370 C128,420 135,480 145,520 C155,480 152,420 148,370 Z" />
-                            <path data-index="19" class="muscle-group" d="M162,370 C182,420 172,480 165,520 C155,480 158,420 155,370 Z" />
-                            <g data-index="20" class="tendon-group">
-                                <circle cx="175" cy="525" r="5" fill="none" stroke-width="2"/>
-                                <line x1="175" y1="525" x2="165" y2="540" />
-                                <line x1="175" y1="525" x2="175" y2="540" />
-                                <line x1="175" y1="525" x2="185" y2="535" />
-                            </g>
-                            <path data-index="23" class="tendon-group" d="M132,582 L188,582 L185,588 L135,588 Z" />
-                        </g>
+                        <!-- 3. INSIDE VIEW -->
+                        <div id="view-inside" class="flex flex-col items-center">
+                            <span class="text-[10px] sm:text-xs font-mono font-bold text-emerald-500/80 tracking-widest mb-2 uppercase text-center">Inside / Medial</span>
+                            <svg viewBox="500 0 250 650" class="w-full h-auto drop-shadow-xl bg-gray-950/30 rounded-lg border border-gray-800/50">
+                                <g id="inside-leg">
+                                    <g class="base-layer">
+                                        <path class="anatomy-base" d="M635,80 C615,180 605,330 610,380 C600,480 605,560 610,600 L565,620 L640,620 C650,560 650,480 640,380 C655,330 665,180 635,80 Z" />
+                                    </g>
+                                    <g class="muscle-layer">
+                                        <path data-index="5" class="muscle-group" d="M635,90 C615,160 620,250 630,310 C645,230 655,150 635,90 Z" />
+                                        <path data-index="6" class="muscle-group" d="M645,100 C650,210 650,310 635,390 L625,390 C640,310 640,210 635,100 Z" />
+                                        <path data-index="3" class="muscle-group" d="M615,210 C600,280 600,350 610,370 C620,310 625,250 615,210 Z" />
+                                    </g>
+                                    <g class="connective-layer">
+                                        <line data-index="19" class="ligament" x1="620" y1="370" x2="620" y2="400" />
+                                        <g data-index="26" class="ligament">
+                                            <circle cx="625" cy="590" r="4" fill="#9ca3af" stroke="none" />
+                                            <line x1="625" y1="590" x2="610" y2="605" />
+                                            <line x1="625" y1="590" x2="625" y2="610" />
+                                            <line x1="625" y1="590" x2="640" y2="605" />
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
 
-                        <g id="posterior-leg">
-                            <path class="anatomy-base" d="M400,100 C370,180 390,280 400,350 C380,400 370,450 390,540 L395,580 L425,580 L430,540 C450,450 460,400 440,350 C460,280 480,180 460,100 Z" />
-                            <path data-index="9" class="muscle-group" d="M380,70 C400,60 420,70 430,90 C400,100 380,110 380,70 Z" />
-                            <path data-index="8" class="muscle-group" d="M370,90 C400,90 460,100 465,160 C440,190 390,190 365,150 Z" />
-                            <path data-index="6" class="muscle-group" d="M415,170 C440,250 445,300 430,360 C415,300 410,250 415,170 Z" />
-                            <path data-index="7" class="muscle-group" d="M385,170 C370,250 375,300 400,360 C410,300 405,250 385,170 Z" />
-                            <g data-index="12" class="tendon-group">
-                                <path d="M430,360 C435,390 440,420 435,450" fill="none" stroke-width="5" stroke-linecap="round"/>
-                                <path d="M400,360 C390,390 380,420 390,450" fill="none" stroke-width="5" stroke-linecap="round"/>
-                            </g>
-                            <path data-index="16" class="muscle-group" d="M395,360 C370,400 380,440 410,460 C440,440 450,400 425,360 C415,380 405,380 395,360 Z" />
-                            <path data-index="17" class="muscle-group" d="M390,440 C380,480 395,510 410,520 C425,510 440,480 430,440 C420,450 400,450 390,440 Z" />
-                            <path data-index="22" class="tendon-group" d="M405,480 C405,520 400,540 400,560 L420,560 C420,540 415,520 415,480 Z" />
-                            <g data-index="21" class="tendon-group">
-                                <circle cx="395" cy="525" r="5" fill="none" stroke-width="2"/>
-                                <line x1="395" y1="525" x2="385" y2="540" />
-                                <line x1="395" y1="525" x2="395" y2="540" />
-                                <line x1="395" y1="525" x2="405" y2="535" />
-                            </g>
-                        </g>
-                    </svg>
+                        <!-- 4. OUTSIDE VIEW -->
+                        <div id="view-outside" class="flex flex-col items-center">
+                            <span class="text-[10px] sm:text-xs font-mono font-bold text-emerald-500/80 tracking-widest mb-2 uppercase text-center">Outside / Lateral</span>
+                            <svg viewBox="750 0 250 650" class="w-full h-auto drop-shadow-xl bg-gray-950/30 rounded-lg border border-gray-800/50">
+                                <g id="outside-leg">
+                                    <g class="base-layer">
+                                        <path class="anatomy-base" d="M865,80 C885,180 895,330 890,380 C900,480 895,560 890,600 L935,620 L860,620 C850,560 850,480 860,380 C845,330 835,180 865,80 Z" />
+                                    </g>
+                                    <g class="muscle-layer">
+                                        <path data-index="12" class="muscle-group" d="M855,80 C835,110 845,170 870,150 C875,110 865,80 855,80 Z" />
+                                        <path data-index="2" class="muscle-group" d="M880,160 C900,230 900,330 885,370 C870,290 865,210 880,160 Z" />
+                                        <path data-index="24" class="muscle-group" d="M870,410 C855,480 860,540 870,580 C880,510 880,450 870,410 Z" />
+                                    </g>
+                                    <g class="connective-layer">
+                                        <path data-index="16" class="fascia" d="M865,140 C855,230 855,310 875,390" />
+                                        <line data-index="20" class="ligament" x1="880" y1="370" x2="880" y2="400" />
+                                        <g data-index="25" class="ligament">
+                                            <circle cx="875" cy="590" r="4" fill="#9ca3af" stroke="none" />
+                                            <line x1="875" y1="590" x2="890" y2="605" />
+                                            <line x1="875" y1="590" x2="875" y2="610" />
+                                            <line x1="875" y1="590" x2="860" y2="605" />
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
@@ -128,7 +190,10 @@
 
                 <div id="active-state" class="hidden flex-col h-full overflow-y-auto p-5 fade-in">
                     <div class="mb-5 border-b border-gray-800 pb-4">
-                        <span class="inline-block px-2 py-1 bg-gray-800 text-gray-400 text-[10px] font-bold rounded mb-2 tracking-widest uppercase border border-gray-700" id="readout-category">Category</span>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="inline-block px-2 py-1 bg-gray-800 text-gray-400 text-[10px] font-bold rounded tracking-widest uppercase border border-gray-700" id="readout-category">Category</span>
+                            <span class="inline-block px-2 py-1 bg-emerald-900/30 text-emerald-400 text-[10px] font-bold rounded tracking-widest uppercase border border-emerald-800/50" id="readout-view">View</span>
+                        </div>
                         <h2 class="text-2xl font-bold text-white mb-1 tracking-wide" id="readout-title">Component Name</h2>
                         <p class="text-emerald-400 font-mono text-xs leading-relaxed" id="readout-desc">Description</p>
                     </div>
@@ -156,199 +221,37 @@
     </div>
 
     <script>
+        // Database perfectly mapped to the 29 0-indexed SVG paths
         const hardwareDatabase = [
-            {
-                category: "Anterior Piston Group",
-                name: "Quadriceps Femoris (General)",
-                desc: "A group of four massive anterior muscles (\"the 60 cm pistons\").",
-                function: "Eccentric shock absorption upon landing; knee extension.",
-                maintenance: `<strong>Exercise:</strong> Dumbbell Bulgarian Split Squats (rear foot elevated on plyo box). <a href="https://www.youtube.com/results?search_query=Bulgarian+split+squat+form+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Standing quad stretch. <a href="https://www.youtube.com/results?search_query=standing+quad+stretch+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Stand on one leg and perform a slow, shallow squat. A burning/heavy ache in the meat of the thigh confirms general quad fatigue."
-            },
-            {
-                category: "Anterior Piston",
-                name: "Rectus Femoris",
-                desc: "The only quad muscle crossing both the hip and the knee.",
-                function: "Hip flexion (lifting the knee forward) and knee extension.",
-                maintenance: `<strong>Exercise:</strong> Straight Leg Raises (lying flat on your mat). <a href="https://www.youtube.com/results?search_query=straight+leg+raises+for+quads+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Kneeling Lunge Stretch (on mat). <a href="https://www.youtube.com/results?search_query=kneeling+lunge+stretch+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Sit in a chair. Keep your leg perfectly straight and lift the entire leg an inch off the seat. Soreness high up near the hip flexor? That's it."
-            },
-            {
-                category: "Anterior Armor Plate",
-                name: "Vastus Lateralis",
-                desc: "The massive outer sweep of the thigh.",
-                function: "Raw, brute-force stabilization and shock absorption.",
-                maintenance: `<strong>Exercise:</strong> Narrow-stance Goblet Squats (holding one heavy weight at chest level). <a href="https://www.youtube.com/results?search_query=narrow+stance+goblet+squat+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Side-lying quad stretch on mat. <a href="https://www.youtube.com/results?search_query=side+lying+quad+stretch+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Perform a single-leg squat with your toes pointed slightly <em>inward</em>. Soreness isolated to the outside sweep of the thigh confirms Vastus Lateralis load."
-            },
-            {
-                category: "Anterior Stabilizer",
-                name: "Vastus Medialis",
-                desc: "The teardrop-shaped inner thigh muscle just above the knee.",
-                function: "Primary patellar tracking; keeps your kneecap aligned.",
-                maintenance: `<strong>Exercise:</strong> Terminal Knee Extensions (TKEs). Anchor a medium latex band to a sturdy post/door, loop it behind your knee, and extend. <a href="https://www.youtube.com/results?search_query=banded+terminal+knee+extension+TKE+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Deep sumo squat hold. <a href="https://www.youtube.com/results?search_query=deep+sumo+squat+stretch+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Sit on the floor, leg straight. Place a rolled towel under the knee. Flex your quad to push the back of your knee down hard into the towel."
-            },
-            {
-                category: "Internal Shock Absorber",
-                name: "Vastus Intermedius",
-                desc: "The hidden muscle sitting underneath the Rectus Femoris.",
-                function: "Pure knee extension power generation.",
-                maintenance: `<strong>Exercise:</strong> Heel-elevated Goblet Squats (prop your heels on small weight plates or a rolled mat, hold a weight). <a href="https://www.youtube.com/results?search_query=heel+elevated+goblet+squat+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Hero Pose (on mat). <a href="https://www.youtube.com/results?search_query=hero+pose+stretch+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Hard to isolate manually; usually presents as a deep, un-targetable, generalized ache directly in the center of the thigh under the Rectus Femoris."
-            },
-            {
-                category: "Posterior Piston Group",
-                name: "Hamstrings (General)",
-                desc: "Three posterior muscles acting as a high-tension rubber band.",
-                function: "The \"Pull\" mechanism; snapping the heel up under your center of mass.",
-                maintenance: `<strong>Exercise:</strong> Dumbbell Romanian Deadlifts (RDLs). <a href="https://www.youtube.com/results?search_query=dumbbell+RDL+form+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Standing toe touches. <a href="https://www.youtube.com/results?search_query=standing+toe+touch+stretch+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Stand, keep your leg straight, dig your heel into the floor, and try to violently drag the floor backward without actually moving your foot."
-            },
-            {
-                category: "Posterior Piston",
-                name: "Biceps Femoris",
-                desc: "The outer hamstring muscle.",
-                function: "Knee flexion and pulling the hip backward.",
-                maintenance: `<strong>Exercise:</strong> Lying hamstring curls on the mat (anchor a latex band, hook it around your ankle, toes pointed <em>outward</em>). <a href="https://www.youtube.com/results?search_query=banded+lying+hamstring+curl+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Seated hamstring stretch. <a href="https://www.youtube.com/results?search_query=seated+hamstring+stretch+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Lie on your stomach, bend the knee to 90 degrees, point your toes <em>outward</em>, and try to pull your heel to your glute while pressing down on your ankle."
-            },
-            {
-                category: "Posterior Piston",
-                name: "Semitendinosus / Semimembranosus",
-                desc: "The inner hamstring muscles.",
-                function: "Knee flexion, hip extension, and internal leg rotation.",
-                maintenance: `<strong>Exercise:</strong> Lying hamstring curls on the mat (anchor latex band, toes pointed <em>inward</em>). <a href="https://www.youtube.com/results?search_query=banded+lying+hamstring+curl+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Wide-angle seated forward bend. <a href="https://www.youtube.com/results?search_query=wide+angle+seated+forward+bend+stretch+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Lie on your stomach, bend the knee to 90 degrees, point your toes <em>inward</em>, and try to pull your heel to your glute while pressing down on your ankle."
-            },
-            {
-                category: "Primary Engine",
-                name: "Gluteus Maximus",
-                desc: "The largest and most powerful muscle in the human body.",
-                function: "The absolute source of forward propulsion.",
-                maintenance: `<strong>Exercise:</strong> Weighted Hip Thrusts (upper back resting on the plyo box, dumbbell across hips) or Booty Band Glute Bridges. <a href="https://www.youtube.com/results?search_query=dumbbell+hip+thrust+on+box+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Pigeon Pose (on mat). <a href="https://www.youtube.com/results?search_query=pigeon+pose+stretch+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Lie on your stomach. Keep your knee bent at exactly 90 degrees, and lift your thigh straight up off the floor toward the ceiling."
-            },
-            {
-                category: "Lateral Stabilizer",
-                name: "Gluteus Medius & Minimus",
-                desc: "Lateral stabilizers sitting on the upper side of the hip.",
-                function: "Violent contraction to keep the pelvis from collapsing sideways.",
-                maintenance: `<strong>Exercise:</strong> Booty Band Lateral Walks / Booty Band Clamshells on the mat. <a href="https://www.youtube.com/results?search_query=banded+clamshells+and+lateral+walks+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Seated Figure-4 stretch. <a href="https://www.youtube.com/results?search_query=seated+figure+4+stretch+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Lie on your side. Keep your leg perfectly straight, and lift it directly up toward the ceiling. A deep ache on the outside of the hip indicates fatigue here."
-            },
-            {
-                category: "Transmission Cable",
-                name: "Quadriceps Tendon",
-                desc: "Connective tissue linking the four quad muscles to the top of the patella.",
-                function: "Upward force transmission from the muscular pistons.",
-                maintenance: `<strong>Maintenance:</strong> Isometric Wall Sits. <a href="https://www.youtube.com/results?search_query=proper+wall+sit+form+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Press your fingertips firmly into the thick, fleshy band directly <em>above</em> the kneecap while flexing the quad. Tenderness indicates tendon strain."
-            },
-            {
-                category: "Transmission Cable",
-                name: "Patellar Ligament / Tendon",
-                desc: "Connective tissue linking the bottom of the patella to the tibia.",
-                function: "Downward force transmission. Takes the brunt of downhill eccentric loads.",
-                maintenance: `<strong>Maintenance:</strong> Plyo Box Eccentric Step-Downs. Stand on the box on one leg, slowly lower the other heel to the floor taking a full 3-5 seconds. Push back up with <em>both</em> legs. <a href="https://www.youtube.com/results?search_query=eccentric+step+downs+for+patellar+tendonitis+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Press your fingertips firmly into the thick cord directly <em>below</em> the kneecap while doing a shallow wall sit. Sharp pain here is \"Runner's Knee.\""
-            },
-            {
-                category: "Transmission Anchor",
-                name: "Hamstring Tendons",
-                desc: "Connective tissues linking hamstrings to the pelvis and lower leg.",
-                function: "Anchors the posterior \"pull\" mechanism to the skeleton.",
-                maintenance: `<strong>Maintenance:</strong> Single-leg Dumbbell RDLs. Focus entirely on a slow, 4-second stretch at the bottom to bulletproof the upper tendon. <a href="https://www.youtube.com/results?search_query=single+leg+dumbbell+RDL+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Press firmly right at your \"sit bone\" (glute crease) while trying to drag your heel backward on the floor. High hamstring tendinopathy will ache here."
-            },
-            {
-                category: "Biological Leaf Spring",
-                name: "Iliotibial (IT) Band",
-                desc: "Massive, thick band of fibrous fascia running down the outside of the thigh.",
-                function: "Provides lateral stabilization.",
-                maintenance: `<strong>Maintenance:</strong> DO NOT STRETCH IT. Strap on a Booty Band and do Clamshells to fire up the Glute Medius so it takes the lateral load off the fascia. <a href="https://www.youtube.com/results?search_query=banded+clamshells+glute+medius+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Stand on the sore leg. Slowly bend the knee to exactly 30 degrees. If a sharp, stabbing pain hits the <em>outside</em> of the knee joint, you have IT friction."
-            },
-            {
-                category: "Joint Stabilizer",
-                name: "ACL & PCL",
-                desc: "Anterior and Posterior Cruciate Ligaments inside the center of the knee.",
-                function: "Stops the shin bone from sliding underneath the femur.",
-                maintenance: `<strong>Maintenance:</strong> Maintain a high cadence (160+ SPM). <a href="https://www.youtube.com/results?search_query=running+160+spm+cadence+drill" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Typically presents as a deep, dull ache in the dead center of the joint, or a sensation that the knee is \"loose\" or \"giving way.\""
-            },
-            {
-                category: "Joint Stabilizer",
-                name: "MCL & LCL",
-                desc: "Medial and Lateral Collateral Ligaments on the inside and outside of the knee.",
-                function: "Stops the knee joint from buckling sideways.",
-                maintenance: `<strong>Maintenance:</strong> Single-leg dumbbell deadlifts (proprioceptive balance training). <a href="https://www.youtube.com/results?search_query=single+leg+deadlift+balance+short" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Press directly on the joint line exactly on the inside (MCL) or outside (LCL) of the knee. Tenderness directly on the joint line indicates ligament stress."
-            },
-            {
-                category: "Posterior Piston",
-                name: "Gastrocnemius",
-                desc: "The superficial, twin-bellied upper calf muscle.",
-                function: "Explosive plantar flexion (toe-off propulsion) and limb flexion at the knee.",
-                maintenance: `<strong>Exercise:</strong> Standing Calf Raises. <a href="https://www.youtube.com/results?search_query=standing+calf+raise+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Straight-leg wall stretch. <a href="https://www.youtube.com/results?search_query=gastrocnemius+wall+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Perform a single-leg heel raise with a perfectly straight knee. A deep burn high up in the back of the leg confirms isolation."
-            },
-            {
-                category: "Endurance Engine",
-                name: "Soleus",
-                desc: "The absolute workhorse endurance muscle lying beneath the Gastrocnemius.",
-                function: "Postural stabilization, sustained plantar flexion, and limb extension at the knee.",
-                maintenance: `<strong>Exercise:</strong> Seated Calf Raises. <a href="https://www.youtube.com/results?search_query=seated+calf+raise+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Bent-knee wall stretch. <a href="https://www.youtube.com/results?search_query=soleus+bent+knee+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Perform a single-leg heel raise with the knee bent at a 45-degree angle. Soreness deep and low in the calf is the Soleus crying."
-            },
-            {
-                category: "Anterior Decelerator",
-                name: "Tibialis Anterior",
-                desc: "The meaty muscle on the front/outside of your shin bone.",
-                function: "Dorsiflexion (lifting the foot to clear the ground) and vital eccentric deceleration of the foot slap.",
-                maintenance: `<strong>Exercise:</strong> Wall Tib Raises (lean back against wall, lift toes). <a href="https://www.youtube.com/results?search_query=tibialis+anterior+raise+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Kneeling shin stretch (sit back on heels). <a href="https://www.youtube.com/results?search_query=tibialis+anterior+kneeling+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Walk across the room entirely on your heels. The immediate burning sensation down the front of your shins is your diagnostic."
-            },
-            {
-                category: "Lateral Stabilizer",
-                name: "Peroneals (Fibularis Group)",
-                desc: "Muscles running down the outside of the calf/fibula.",
-                function: "Foot eversion (turning the sole outward) and dynamic lateral ankle stabilization.",
-                maintenance: `<strong>Exercise:</strong> Banded ankle eversions. <a href="https://www.youtube.com/results?search_query=banded+ankle+eversion+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Inversion stretch (gently pulling foot inward). <a href="https://www.youtube.com/results?search_query=peroneal+ankle+inversion+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Anchor a band, wrap around foot, and rotate foot outward against resistance. Outer lower-leg ache indicates fatigue."
-            },
-            {
-                category: "Joint Stabilizer",
-                name: "Lateral Ankle Ligaments",
-                desc: "The outer structural tape of the talocrural joint (ATFL, CFL, PTFL).",
-                function: "Prevents the foot from rolling too far inward (inversion).",
-                maintenance: `<strong>Maintenance:</strong> Single-leg balance on an unstable surface (rolled-up yoga mat or Bosu ball). <a href="https://www.youtube.com/results?search_query=ankle+stability+exercises+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> None. Do not stretch ligaments, you maniac.`,
-                diagnostic: "Sit and point your toe down, then yank your foot sharply inward. If you feel a tearing sensation or sharp ache on the outer ankle bone, congratulations, it's sprained."
-            },
-            {
-                category: "Joint Stabilizer",
-                name: "Medial Ankle Ligament",
-                desc: "The massive, multi-banded inner tape of the ankle joint (Deltoid Ligament).",
-                function: "Prevents the foot from collapsing outward (eversion).",
-                maintenance: `<strong>Maintenance:</strong> Banded ankle inversions (pulling foot inward against resistance). <a href="https://www.youtube.com/results?search_query=banded+ankle+inversion+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Pain located exclusively on the inside ankle bone, usually resulting from severe external trauma or a totally botched landing."
-            },
-            {
-                category: "Biological Leaf Spring",
-                name: "Achilles Tendon",
-                desc: "The thickest, strongest biological leaf spring in the human body.",
-                function: "Transmits muscular force to the bone, storing and releasing massive elastic energy.",
-                maintenance: `<strong>Maintenance:</strong> Eccentric Heel Drops off a stair. <a href="https://www.youtube.com/results?search_query=eccentric+heel+drops+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Pinch the thick cord just above your heel bone. General stiffness in the morning that warms up during the day is classic tendinopathy."
-            },
-            {
-                category: "Underbody Support",
-                name: "Plantar Fascia",
-                desc: "Thick connective tissue web forming the undercarriage of the foot.",
-                function: "Windlass mechanism support; maintains the arch during weight-bearing propulsion.",
-                maintenance: `<strong>Maintenance:</strong> Towel scrunches with toes / lacrosse ball roll. <a href="https://www.youtube.com/results?search_query=foot+towel+scrunches+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Big toe extension stretch. <a href="https://www.youtube.com/results?search_query=plantar+fascia+toe+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`,
-                diagnostic: "Press your thumb hard into the sole of your foot, right where the arch meets the heel bone. Sharp, needle-like pain is plantar fasciitis."
-            }
+            { category: "Anterior Piston Group", name: "Quadriceps Femoris (General)", view: "FRONT / ANTERIOR", desc: "A group of four massive anterior muscles (\"the 60 cm pistons\").", function: "Eccentric shock absorption upon landing; knee extension.", maintenance: `<strong>Exercise:</strong> Dumbbell Bulgarian Split Squats. <a href="https://www.youtube.com/results?search_query=bulgarian+split+squat+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Standing quad stretch. <a href="https://www.youtube.com/results?search_query=standing+quad+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Stand on one leg and perform a slow, shallow squat. A burning/heavy ache confirms general fatigue." },
+            { category: "Anterior Piston", name: "Rectus Femoris", view: "FRONT / ANTERIOR", desc: "The only quad muscle crossing both the hip and the knee.", function: "Hip flexion and knee extension.", maintenance: `<strong>Exercise:</strong> Straight Leg Raises. <a href="https://www.youtube.com/results?search_query=straight+leg+raise+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Kneeling Lunge Stretch. <a href="https://www.youtube.com/results?search_query=kneeling+lunge+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Sit in a chair. Keep leg straight and lift entirely off the seat. Soreness near the hip flexor is the trigger." },
+            { category: "Anterior Armor Plate", name: "Vastus Lateralis", view: "OUTSIDE / LATERAL", desc: "The massive outer sweep of the thigh.", function: "Raw, brute-force stabilization and shock absorption.", maintenance: `<strong>Exercise:</strong> Narrow-stance Goblet Squats. <a href="https://www.youtube.com/results?search_query=narrow+stance+goblet+squat+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Side-lying quad stretch. <a href="https://www.youtube.com/results?search_query=side+lying+quad+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Single-leg squat with toes pointed inward. Outside sweep soreness confirms load." },
+            { category: "Anterior Stabilizer", name: "Vastus Medialis", view: "INSIDE / MEDIAL", desc: "The teardrop-shaped inner thigh muscle just above the knee.", function: "Primary patellar tracking; keeps kneecap aligned.", maintenance: `<strong>Exercise:</strong> Terminal Knee Extensions (TKEs). <a href="https://www.youtube.com/results?search_query=terminal+knee+extension+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Deep sumo squat hold. <a href="https://www.youtube.com/results?search_query=deep+sumo+squat+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Sit straight-legged with towel under knee. Flex quad to push knee down into towel." },
+            { category: "Internal Shock Absorber", name: "Vastus Intermedius", view: "FRONT / ANTERIOR", desc: "The hidden muscle sitting underneath the Rectus Femoris.", function: "Pure knee extension power generation.", maintenance: `<strong>Exercise:</strong> Heel-elevated Goblet Squats. <a href="https://www.youtube.com/results?search_query=heel+elevated+goblet+squat+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Hero Pose. <a href="https://www.youtube.com/results?search_query=hero+pose+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Deep, un-targetable ache in the center of the thigh." },
+            { category: "Medial Stabilizer Group", name: "Adductor Group", view: "INSIDE / MEDIAL", desc: "Dense muscular complex filling inner thigh space.", function: "Adduction and severe horizontal stabilization during stance phase.", maintenance: `<strong>Exercise:</strong> Copenhagen Planks. <a href="https://www.youtube.com/results?search_query=copenhagen+plank+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Butterfly stretch. <a href="https://www.youtube.com/results?search_query=butterfly+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Lie on back, clamp pillow between knees, squeeze violently. Deep groin pain isolates Adductors." },
+            { category: "Vertical Inseam Strap", name: "Gracilis", view: "INSIDE / MEDIAL", desc: "Long, thin strap down the innermost line of the thigh.", function: "Weak adduction, assists in knee flexion and internal rotation.", maintenance: `<strong>Exercise:</strong> Banded Standing Adductions (knee straight). <a href="https://www.youtube.com/results?search_query=banded+adduction+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Modified Frog Stretch. <a href="https://www.youtube.com/results?search_query=frog+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Lock knee perfectly straight and sweep leg across midline." },
+            { category: "Multi-Planar Spiral Strap", name: "Sartorius", view: "FRONT / ANTERIOR", desc: "Longest muscle in chassis; spiral strap from outer hip to inner knee.", function: "Hip flexion, knee flexion, outward rotation.", maintenance: `<strong>Exercise:</strong> High Knee Band Drives. <a href="https://www.youtube.com/results?search_query=sartorius+exercise+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Couch Stretch Variation. <a href="https://www.youtube.com/results?search_query=sartorius+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "The Hacky-Sack Lift: Bring knee up, turn outward, pull ankle up/inward." },
+            { category: "Posterior Piston Group", name: "Hamstrings (General)", view: "BACK / POSTERIOR", desc: "Three posterior muscles acting as a high-tension rubber band.", function: "The 'Pull' mechanism; snapping heel up under center of mass.", maintenance: `<strong>Exercise:</strong> Dumbbell RDLs. <a href="https://www.youtube.com/results?search_query=dumbbell+RDL+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Standing toe touches. <a href="https://www.youtube.com/results?search_query=standing+toe+touch+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Keep leg straight, dig heel into floor, try to drag floor backward." },
+            { category: "Posterior Piston", name: "Biceps Femoris", view: "BACK / POSTERIOR", desc: "The outer hamstring muscle.", function: "Knee flexion and pulling hip backward.", maintenance: `<strong>Exercise:</strong> Banded lying hamstring curls (toes outward). <a href="https://www.youtube.com/results?search_query=banded+hamstring+curl+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Seated hamstring stretch. <a href="https://www.youtube.com/results?search_query=seated+hamstring+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Lie on stomach, bend knee 90 degrees, point toes OUTWARD, pull heel to glute against resistance." },
+            { category: "Posterior Piston", name: "Semitendinosus & Semimembranosus", view: "BACK / POSTERIOR", desc: "The inner hamstring muscles.", function: "Knee flexion, hip extension, internal rotation.", maintenance: `<strong>Exercise:</strong> Banded lying hamstring curls (toes inward). <a href="https://www.youtube.com/results?search_query=lying+banded+leg+curl+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Wide-angle forward bend. <a href="https://www.youtube.com/results?search_query=wide+angle+seated+forward+bend+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Lie on stomach, bend knee 90 degrees, point toes INWARD, pull heel to glute against resistance." },
+            { category: "Primary Propulsion Engine", name: "Gluteus Maximus", view: "BACK / POSTERIOR", desc: "Largest and most powerful muscle in the human body.", function: "Absolute source of forward propulsion.", maintenance: `<strong>Exercise:</strong> Weighted Hip Thrusts. <a href="https://www.youtube.com/results?search_query=dumbbell+hip+thrust+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Pigeon Pose. <a href="https://www.youtube.com/results?search_query=pigeon+pose+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Lie on stomach. Knee bent 90 degrees, lift thigh straight up toward ceiling." },
+            { category: "Lateral Stabilizer", name: "Gluteus Medius & Minimus", view: "OUTSIDE / LATERAL", desc: "Lateral stabilizers sitting on upper side of hip.", function: "Violent contraction to keep pelvis from collapsing sideways.", maintenance: `<strong>Exercise:</strong> Booty Band Lateral Walks. <a href="https://www.youtube.com/results?search_query=banded+clamshells+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Seated Figure-4. <a href="https://www.youtube.com/results?search_query=seated+figure+4+stretch+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Lie on side. Keep leg straight, lift directly upward." },
+            { category: "Transmission Cable", name: "Quadriceps Tendon", view: "FRONT / ANTERIOR", desc: "Connective tissue linking quad muscles to patella.", function: "Upward force transmission from muscular pistons.", maintenance: `<strong>Maintenance:</strong> Isometric Wall Sits. <a href="https://www.youtube.com/results?search_query=isometric+wall+sit+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Press fingertips firmly into fleshy band ABOVE kneecap while flexing quad." },
+            { category: "Transmission Cable", name: "Patellar Ligament / Tendon", view: "FRONT / ANTERIOR", desc: "Connective tissue linking bottom of patella to tibia.", function: "Downward force transmission. Takes downhill eccentric loads.", maintenance: `<strong>Maintenance:</strong> Plyo Box Eccentric Step-Downs. <a href="https://www.youtube.com/results?search_query=eccentric+step+downs+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Press fingertips into cord BELOW kneecap while doing shallow wall sit. Sharp pain is Runner's Knee." },
+            { category: "Transmission Anchor", name: "Hamstring Tendons", view: "BACK / POSTERIOR", desc: "Connective tissues linking hamstrings to pelvis.", function: "Anchors posterior pull mechanism.", maintenance: `<strong>Maintenance:</strong> Single-leg Dumbbell RDLs. <a href="https://www.youtube.com/results?search_query=single+leg+RDL+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Press firmly at sit bone while trying to drag heel backward." },
+            { category: "Biological Leaf Spring", name: "Iliotibial (IT) Band", view: "OUTSIDE / LATERAL", desc: "Massive fibrous fascia down outside of thigh.", function: "Provides lateral stabilization.", maintenance: `<strong>Maintenance:</strong> DO NOT STRETCH. Booty Band Clamshells. <a href="https://www.youtube.com/results?search_query=it+band+syndrome+glute+exercises+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Stand on sore leg, bend knee 30 degrees. Sharp pain on outside joint line." },
+            { category: "Internal Joint Stabilizer", name: "ACL (Anterior Cruciate Ligament)", view: "FRONT / ANTERIOR", desc: "Primary internal knee ligament.", function: "Stops shin bone from sliding forward underneath femur.", maintenance: `<strong>Maintenance:</strong> High cadence (160+ SPM). <a href="https://www.youtube.com/results?search_query=running+cadence+drills+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Dull ache dead center of joint, or sensation of knee giving way." },
+            { category: "Internal Joint Stabilizer", name: "PCL (Posterior Cruciate Ligament)", view: "BACK / POSTERIOR", desc: "Primary internal knee ligament.", function: "Stops shin bone from sliding backward underneath femur.", maintenance: `<strong>Maintenance:</strong> High cadence (160+ SPM). <a href="https://www.youtube.com/results?search_query=running+cadence+drills+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Deep joint pain, often resulting from direct blow to bent knee." },
+            { category: "Medial Joint Stabilizer", name: "MCL (Medial Collateral Ligament)", view: "INSIDE / MEDIAL", desc: "Inner lateral stabilizer of knee.", function: "Stops knee joint from buckling inward.", maintenance: `<strong>Maintenance:</strong> Single-leg dumbbell deadlifts. <a href="https://www.youtube.com/results?search_query=proprioception+knee+rehab+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Press directly on joint line exactly on the INSIDE of the knee." },
+            { category: "Lateral Joint Stabilizer", name: "LCL (Lateral Collateral Ligament)", view: "OUTSIDE / LATERAL", desc: "Outer lateral stabilizer of knee.", function: "Stops knee joint from buckling outward.", maintenance: `<strong>Maintenance:</strong> Single-leg dumbbell deadlifts. <a href="https://www.youtube.com/results?search_query=proprioception+knee+rehab+shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Press directly on joint line exactly on the OUTSIDE of the knee." },
+            { category: "Posterior Piston", name: "Gastrocnemius", view: "BACK / POSTERIOR", desc: "Superficial, twin-bellied upper calf muscle.", function: "Explosive plantar flexion and limb flexion at knee.", maintenance: `<strong>Exercise:</strong> Standing Calf Raises. <a href="https://www.youtube.com/results?search_query=standing+calf+raise+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Straight-leg wall stretch. <a href="https://www.youtube.com/results?search_query=gastrocnemius+wall+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Single-leg heel raise with perfectly straight knee." },
+            { category: "Endurance Engine", name: "Soleus", view: "BACK / POSTERIOR", desc: "Absolute workhorse endurance muscle lying beneath Gastrocnemius.", function: "Postural stabilization, sustained plantar flexion.", maintenance: `<strong>Exercise:</strong> Seated Calf Raises. <a href="https://www.youtube.com/results?search_query=seated+calf+raise+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Bent-knee wall stretch. <a href="https://www.youtube.com/results?search_query=soleus+bent+knee+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Single-leg heel raise with knee bent at 45-degree angle." },
+            { category: "Anterior Decelerator", name: "Tibialis Anterior", view: "FRONT / ANTERIOR", desc: "Meaty muscle on front/outside of shin bone.", function: "Dorsiflexion and vital eccentric deceleration of foot slap.", maintenance: `<strong>Exercise:</strong> Wall Tib Raises. <a href="https://www.youtube.com/results?search_query=tibialis+anterior+raise+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Kneeling shin stretch. <a href="https://www.youtube.com/results?search_query=tibialis+anterior+kneeling+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Walk across room entirely on heels. Immediate burning sensation." },
+            { category: "Lateral Stabilizer", name: "Peroneals (Fibularis Group)", view: "OUTSIDE / LATERAL", desc: "Muscles running down outside of calf/fibula.", function: "Foot eversion and dynamic lateral ankle stabilization.", maintenance: `<strong>Exercise:</strong> Banded ankle eversions. <a href="https://www.youtube.com/results?search_query=banded+ankle+eversion+exercise+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Inversion stretch. <a href="https://www.youtube.com/results?search_query=peroneal+ankle+inversion+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Rotate foot outward against resistance. Outer lower-leg ache indicates fatigue." },
+            { category: "Lateral Joint Stabilizer", name: "Lateral Ankle Ligaments", view: "OUTSIDE / LATERAL", desc: "Outer structural tape of talocrural joint.", function: "Prevents foot from rolling too far inward.", maintenance: `<strong>Maintenance:</strong> Single-leg balance on unstable surface. <a href="https://www.youtube.com/results?search_query=ankle+stability+exercises+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> None. Do not stretch ligaments.`, diagnostic: "Point toe down, yank foot sharply inward." },
+            { category: "Medial Joint Stabilizer", name: "Medial Ankle Ligament", view: "INSIDE / MEDIAL", desc: "Massive, multi-banded inner tape of ankle joint.", function: "Prevents foot from collapsing outward.", maintenance: `<strong>Maintenance:</strong> Banded ankle inversions. <a href="https://www.youtube.com/results?search_query=banded+ankle+inversion+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Pain located exclusively on inside ankle bone." },
+            { category: "Biological Leaf Spring", name: "Achilles Tendon", view: "BACK / POSTERIOR", desc: "Thickest, strongest biological leaf spring in body.", function: "Transmits muscular force to bone.", maintenance: `<strong>Maintenance:</strong> Eccentric Heel Drops. <a href="https://www.youtube.com/results?search_query=eccentric+heel+drops+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Pinch thick cord just above heel. Morning stiffness equals tendinopathy." },
+            { category: "Underbody Support", name: "Plantar Fascia", view: "BACK / POSTERIOR", desc: "Thick connective tissue web undercarriage of foot.", function: "Windlass mechanism support.", maintenance: `<strong>Maintenance:</strong> Towel scrunches with toes. <a href="https://www.youtube.com/results?search_query=foot+towel+scrunches+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a><br><br><strong>Stretch:</strong> Big toe extension stretch. <a href="https://www.youtube.com/results?search_query=plantar+fascia+toe+stretch+%23shorts" target="_blank" class="inline-flex items-center text-emerald-400 hover:text-emerald-300 ml-1 font-bold">🎥 Watch Demo</a>`, diagnostic: "Press thumb hard into sole where arch meets heel. Sharp needle pain." }
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -360,7 +263,10 @@
                 button.className = 'hardware-btn w-full text-left px-3 py-2.5 rounded-lg text-sm font-medium text-gray-300 border-l-4 border-transparent focus:outline-none';
                 button.innerHTML = `
                     <span class="font-bold block text-white">${item.name}</span>
-                    <span class="text-[10px] text-gray-500 uppercase tracking-wider">${item.category}</span>
+                    <span class="text-[10px] text-gray-500 uppercase tracking-wider flex items-center justify-between">
+                        <span>${item.category}</span>
+                        <span class="text-emerald-600 font-bold ml-2 hidden lg:inline-block border border-emerald-900/50 bg-emerald-950 px-1 py-0.5 rounded">${item.view.split(' ')[0]}</span>
+                    </span>
                 `;
                 button.onclick = () => loadComponent(index, button);
                 listContainer.appendChild(button);
@@ -419,23 +325,49 @@
                 buttonElement.classList.add('active-btn');
             }
 
+            // Highlighting specific components based on index logic
             document.querySelectorAll('[data-index]').forEach(el => {
                 const elIndex = parseInt(el.getAttribute('data-index'));
                 
-                const isActive = (elIndex === index) || 
-                                 (index === 0 && [1, 2, 3, 4].includes(elIndex)) ||
-                                 (index === 5 && [6, 7].includes(elIndex));
-                                 
+                // Parent-Child Grouping Logic
+                let isActive = false;
+                if (elIndex === index) {
+                    isActive = true;
+                } else if (index === 0 && [1, 2, 3, 4].includes(elIndex)) {
+                    isActive = true; // Quad General
+                } else if (index === 8 && [9, 10].includes(elIndex)) {
+                    isActive = true; // Hamstring General
+                }
+                
                 if (isActive) {
                     el.classList.add('active-part');
                     Array.from(el.children).forEach(child => child.classList.add('active-part'));
+                    
+                    // Topological layer sort: Force active component to front of its specific parent group
+                    if(el.parentNode) {
+                        el.parentNode.appendChild(el); 
+                    }
                 } else {
                     el.classList.remove('active-part');
                     Array.from(el.children).forEach(child => child.classList.remove('active-part'));
                 }
             });
 
+            // Auto-scroll diagram
+            const viewPrefix = data.view.split(' / ')[0].trim().toUpperCase();
+            let viewId = '';
+            if (viewPrefix === 'FRONT') viewId = 'view-front';
+            else if (viewPrefix === 'BACK') viewId = 'view-back';
+            else if (viewPrefix === 'INSIDE') viewId = 'view-inside';
+            else if (viewPrefix === 'OUTSIDE') viewId = 'view-outside';
+
+            if (viewId) {
+                const viewEl = document.getElementById(viewId);
+                if (viewEl) viewEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
             document.getElementById('readout-category').innerText = data.category;
+            document.getElementById('readout-view').innerText = data.view;
             document.getElementById('readout-title').innerText = data.name;
             document.getElementById('readout-desc').innerText = data.desc;
             document.getElementById('readout-function').innerText = data.function;
