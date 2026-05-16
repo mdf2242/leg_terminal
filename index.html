@@ -69,7 +69,8 @@
                         <div id="view-front" class="flex flex-col items-center">
                             <span class="text-[10px] sm:text-xs font-mono font-bold text-emerald-500/80 tracking-widest mb-2 uppercase text-center">Front / Anterior</span>
                             <svg viewBox="0 0 250 650" class="w-full h-auto drop-shadow-xl bg-gray-950/30 rounded-lg border border-gray-800/50">
-                                <g id="front-leg">
+                                <text x="35" y="325" transform="rotate(-90 35 325)" fill="rgba(16, 185, 129, 0.4)" font-size="12" font-family="monospace" font-weight="bold" letter-spacing="6" text-anchor="middle">OUTSIDE</text>
+                                <g id="front-leg" transform="translate(250, 0) scale(-1, 1)">
                                     <g class="base-layer">
                                         <path class="anatomy-base" d="M95,80 C75,180 95,330 105,380 C95,480 100,550 105,590 L90,620 L160,620 L145,590 C150,550 155,480 145,380 C155,330 175,180 155,80 Z" />
                                     </g>
@@ -97,7 +98,8 @@
                         <div id="view-back" class="flex flex-col items-center">
                             <span class="text-[10px] sm:text-xs font-mono font-bold text-emerald-500/80 tracking-widest mb-2 uppercase text-center">Back / Posterior</span>
                             <svg viewBox="250 0 250 650" class="w-full h-auto drop-shadow-xl bg-gray-950/30 rounded-lg border border-gray-800/50">
-                                <g id="back-leg">
+                                <text x="465" y="325" transform="rotate(90 465 325)" fill="rgba(16, 185, 129, 0.4)" font-size="12" font-family="monospace" font-weight="bold" letter-spacing="6" text-anchor="middle">OUTSIDE</text>
+                                <g id="back-leg" transform="translate(750, 0) scale(-1, 1)">
                                     <g class="base-layer">
                                         <path class="anatomy-base" d="M345,80 C325,180 345,330 355,380 C345,480 350,550 355,610 L395,610 C400,550 405,480 395,380 C405,330 425,180 405,80 Z" />
                                     </g>
@@ -255,6 +257,11 @@
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Cache original DOM order to prevent Z-index leakage
+            document.querySelectorAll('g[class$="-layer"] > *').forEach((el, idx) => {
+                el.setAttribute('data-orig-pos', idx);
+            });
+
             const listContainer = document.getElementById('component-list');
             
             hardwareDatabase.forEach((item, index) => {
@@ -325,7 +332,14 @@
                 buttonElement.classList.add('active-btn');
             }
 
-            // Highlighting specific components based on index logic
+            // 1. Rebuild the original topological matrix before applying new highlights
+            document.querySelectorAll('g[class$="-layer"]').forEach(layer => {
+                Array.from(layer.children)
+                    .sort((a, b) => parseInt(a.getAttribute('data-orig-pos')) - parseInt(b.getAttribute('data-orig-pos')))
+                    .forEach(el => layer.appendChild(el));
+            });
+
+            // 2. Apply Highlighting specific components based on index logic
             document.querySelectorAll('[data-index]').forEach(el => {
                 const elIndex = parseInt(el.getAttribute('data-index'));
                 
